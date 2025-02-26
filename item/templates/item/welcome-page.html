@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FEEL</title>
+</head>
+<body>
+    <header>
+        <h1>How do you feel about 'Music'?</h1>
+        <p>or:</p>
+    </header>
+    <ul>
+        {% for item in items %}
+        <li>{{ item }}</li>
+        {% endfor %}
+    </ul>
+    <footer>
+        <form action="" method="POST">
+            {% csrf_token %}
+            <label>Create a new item:</label>
+            <input type="text" name="new-item">
+            <button type="submit">Add</button>
+        </form>
+    </footer>
+</body>
+</html>

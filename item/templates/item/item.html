@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feelings about {{ item }}</title>
+</head>
+<body>
+    <header>
+        <h1>{{ item }}</h1>
+        <form action="" method="post">
+            {% csrf_token %}
+            <button name="item-reaction" value="1">Superior</button>
+            <button name="item-reaction" value="0">Inferior</button>
+        </form>
+    </header>
+    <ul>
+        {% for comment in comments %}
+        <li>
+            <p>{{ comment }}</p>
+            <form action="" method="post">
+                {% csrf_token %}
+                <button name="comment-reaction" value="1,{{ comment.id }}">Superior</button>
+                <button name="comment-reaction" value="0,{{ comment.id }}">Inferior</button>
+            </form>
+        </li>
+        {% endfor %}
+    </ul>
+    <form action="" method="POST">
+        {% csrf_token %}
+        <input type="text" name="new-comment">
+        <button type="submit">Rec</button>
+    </form>
+    <footer></footer>    
+</body>
+</html>
